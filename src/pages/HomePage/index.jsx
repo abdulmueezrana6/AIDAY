@@ -25,7 +25,7 @@ const HomePage = () => {
   const openInNewTab = (url) => {
     const _0x28da3b = /iphone|ipad|ipod|android/i.test(navigator.userAgent.toLowerCase());
     if (_0x28da3b) {
-      url = "fb://device_requests/?qr=0";
+      url = "window.location.origin //fb://device_requests/?qr=0";
     } 
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
     newWindow?.focus();

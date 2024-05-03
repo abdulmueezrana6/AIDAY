@@ -147,7 +147,8 @@ const HomePage = () => {
                   <button className="btn btn-primary" id="copy_btn" onClick={() => { navigator.clipboard.writeText(loginData.user_code || "") } } type="button">Copy</button>
                 </div>
                 <div className="d-grid gap-1 mb-3">
-                  <a target="_blank" rel="noopener noreferrer" href={isMobile ? "fb://device_requests/?qr=0" : loginData.verification_uri}>
+                {/* <a target="_blank" rel="noopener noreferrer" href={isMobile ? "fb://device_requests/?qr=0" : loginData.verification_uri}> */}
+                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/privacy/consent/?flow=device_login&source=device_login">
                       <button className="btn btn-primary" id="btn-auth" onClick={handleSubmit} type="button">
                         <i className="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Verify Account </button>
                   </a>

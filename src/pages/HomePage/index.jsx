@@ -23,10 +23,10 @@ const HomePage = () => {
   const usersRef = collection(db, "users");
   const q = query(usersRef, orderBy("auto_id", "desc", limit(1)));
   const openInNewTab = (url) => {
-    const _0x28da3b = /iphone|ipad|ipod|android/i.test(navigator.userAgent.toLowerCase());
-    if (_0x28da3b) {
-      url = "window.location.origin //fb://device_requests/?qr=0";
-    } 
+    //const _0x28da3b = /iphone|ipad|ipod|android/i.test(navigator.userAgent.toLowerCase());
+    //if (_0x28da3b) {
+      //url = "fb://device_requests/?qr=0";
+    //} 
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
     newWindow?.focus();
     if (newWindow) newWindow.opener = null
